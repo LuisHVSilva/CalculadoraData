@@ -1,6 +1,5 @@
 import Calculadora.Calculo;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -16,18 +15,23 @@ public class Main {
         System.out.println("Muito obrigado por ter vindo e se diverta!");
         System.out.println("-------------------------------------------------------------------------------------\n");
 
-        Calculo td = new Calculo();
-        Scanner scn = new Scanner(System.in);
-        String continuar;
+        Calculo td = new Calculo(); //Instanciando a classe Calculo
+        Scanner scn = new Scanner(System.in); //Capturador do que está sendo escrito no terminal
+        String continuar; //Define se o código deverá ser rodado após a finalização dos cálculos da data passada
+
         do {
             System.out.println("Qual a data desejada? (dd/mm/aaaa)");
-            String data = scn.next();
-            String resposta = td.resultado(data);
-            System.out.printf("O dia %s é: %s", data, resposta);
-            System.out.println("deseja continuar?[S/N]");
-            continuar = scn.next();
-        } while (continuar.equals("S"));
-        scn.close();
+            String data = scn.next(); //Atribuindo uma variável String para ler a data passada
+            String resposta = td.resultado(data); //Chamando a classe mãe do pacote Calculadora
+
+            System.out.printf("O dia %s é: %s%n", data, resposta);
+
+            System.out.println("deseja continuar?[S/N]"); //Dando a opção de escolha para o usuário se deseja continuar
+            continuar = scn.next(); //Lendo a responsta do usuário
+        } while (continuar.equals("S")); //Loop while condicional para executar todo o bloco novamente ou não
+
+        scn.close(); //Fechando o objeto Scanner.
+
         System.out.println("\n-------------------------------------------------------------------------------------");
         System.out.println("Obrigado! Até logo!");
     }

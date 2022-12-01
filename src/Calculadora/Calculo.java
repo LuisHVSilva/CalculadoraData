@@ -9,41 +9,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Calculo {
-    int dia, mes, ano, sec;
-
+    /*Espaço das variáveis*/
+    int dia, mes, ano;
     boolean anobi;
 
-    public int getDia() {
-        return dia;
-    }
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-    public int getMes() {
-        return mes;
-    }
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-    public int getAno() {
-        return ano;
-    }
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-    public int getSec() {
-        return sec;
-    }
-    public void setSec(int sec) {
-        this.sec = sec;
-    }
-    public boolean isAnobi() {
-        return anobi;
-    }
-    public void setAnobi(boolean anobi) {
-        this.anobi = anobi;
-    }
+    /*Espaço dos ncapsuladores das variáveis*/
+    public int getDia() {return dia;}
+    public void setDia(int dia) {this.dia = dia;}
+    public int getMes() {return mes;}
+    public void setMes(int mes) {this.mes = mes;}
+    public int getAno() {return ano;}
+    public void setAno(int ano) {this.ano = ano;}
+    public boolean isAnobi() {return anobi;}
+    public void setAnobi(boolean anobi) {this.anobi = anobi;}
 
+    /*Espaço das funções*/
+
+    //Função usada para transformar em números inteiros o dia, mês e o ano passado pelo usuário.
     public void stringToInteger(String x){
         if(x.length() == 10){
             setDia(Integer.parseInt(x.substring(0, 2)));
@@ -53,22 +35,8 @@ public class Calculo {
             System.out.println("Data apresentada em formato errado, favor corrigir.");
         }
     }
-    public void seculo(){
-        if(getAno() - 1900 >= 100) {
-            setSec((1900 - getAno())/100);
-        } else if(getAno() - 1900 < 0) {
-            setSec(((1900 - getAno()) + 100) / 100);
-        }
-    }
-    public void anoBissexto(){
-        setAnobi(false);
-        if(getAno() % 4 == 0 && getAno() % 100 != 0){
-            setAnobi(true);
-        } else if (getAno() % 4 == 0 && getAno() % 100 == 0 && getAno() % 400 == 0){
-            setAnobi(true);
-        }
-    }
 
+    //Definir a chave do ano.
     public void chaveAno(){
         String a = String.valueOf(getAno());
         int x;
@@ -81,19 +49,9 @@ public class Calculo {
             case 10, 21, 27, 32, 38, 49, 55, 60, 66, 77, 83, 88, 94 -> {x = 5;}
             default -> {x = 6;}
         }
-
-        if(getSec() != 0){
-            if (x == 0) {
-                setAno(6);
-            } else {
-                if (getSec() > 0) {
-                    setAno(x + getSec() + 1);
-                } else {
-                    setAno(x + getSec());
-                }
-            }
-        }
     }
+
+    //Definir a chave do Mês.
     public void chaveMes(){
         switch (getMes()){
             case 4, 7 -> {setMes(0);}
@@ -108,6 +66,7 @@ public class Calculo {
 
     }
 
+    //Definir a chave da semana.
     public Map<Integer, String> chaveSemana(){
         Map<Integer, String> semana = new HashMap<>();
         semana.put(0, "Sábado");
@@ -120,13 +79,35 @@ public class Calculo {
         return semana;
     }
 
+    //Calcular o número que será usado para mudar a chave do ano caso seja necessário
+    public void seculo(){
+        if(getAno() - 1900 >= 100) {
+            int sec = ((1900 - getAno())/100) != 0 ? (1900 - getAno())/100 : 6;
+            setAno(getAno() + sec);
+        } else if(getAno() - 1900 < 0) {
+            int sec = (((1900 - getAno()) + 100) / 100) + 1 != 0 ? (((1900 - getAno()) + 100) / 100) : 6;
+            setAno(getAno() +sec + 1);
+        }
+    }
+
+    //Descobrir se o ano é bissexto.
+    public void anoBissexto(){
+        setAnobi(false);
+        if(getAno() % 4 == 0 && getAno() % 100 != 0){
+            setAnobi(true);
+        } else if (getAno() % 4 == 0 && getAno() % 100 == 0 && getAno() % 400 == 0){
+            setAnobi(true);
+        }
+    }
+
+    //Fazer o cálculo do dia da semana.
     public String resultado(String x){
 
         stringToInteger(x);
-        seculo();
         anoBissexto();
         chaveMes();
         chaveAno();
+        seculo();
 
         int soma = getDia() + getMes() + getAno();
         int maiorMultiplo7 = (soma / 7) * 7;

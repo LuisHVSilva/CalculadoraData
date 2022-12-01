@@ -1,12 +1,18 @@
-import Calculadora.TratamentoDados;
+import Calculadora.Calculo;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        TratamentoDados td = new TratamentoDados();
+        Calculo td = new Calculo();
+        String data = "01/12/2022";
 
-        String data = "07/09/1984";
-        td.stringToInteger(data);
+
+        String resposta = td.resultado(data);
+        System.out.printf("O dia %s é: %s", data,resposta);
+
+
+
     }
+
 }

@@ -1,5 +1,5 @@
 <h1>Seja bem vindo à calculadora de dia de semana Java! </h1>
-Antes de qualquer coisa, para os iniciantes no GitHub, o projeto inteiro estará dentro da pasta 'scr'.
+Antes de qualquer coisa, para os iniciantes no GitHub, o projeto inteiro estará dentro da pasta 'scr'.<br><br>
 Este é um programa Java que foi feito com o intuito de calcular o dia da semana de qualquer dia, mês ou ano, onde um cáculo básico é efetuado com base de algumas constantes.
 
 <h3>Cáculos</h3>
@@ -27,3 +27,9 @@ Vamos ver um exemplo para cada:
   <li>1822 -> 1922 tem a chave '6', então a chave do ano 2022 é 4.</li>
 </ul>
 Entendido como pegar a chave do ano, é só seguir o base de cáculo explicada anteriormente.
+<br>
+<h3>Código</h3>
+O código está dividido em duas grandes áreas, sendo a classe Java main responsável pela interação programa e usuário e o pacote Calculadora, com apenas uma classe Calculo, responsável por efetuar toda a lógica das contas. <br>
+Todo o código está comentando explicando a necessidade por trás da existência de cada classe e cada variável.<br>
+Qualquer dúvida estou à disposição.<br>
+Agradeço desde já pelo carinho

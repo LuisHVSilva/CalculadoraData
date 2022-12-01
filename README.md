@@ -26,6 +26,7 @@ Vamos ver um exemplo para cada:
   <li>2022 -> 1922 tem a chave '6', então a chave do ano 2022 é 5.</li>
   <li>1822 -> 1922 tem a chave '6', então a chave do ano 2022 é 4.</li>
 </ul>
+Para ambos os casos quando o ano for bissexto, ainda deverá tirar um da chave final.<br>
 Entendido como pegar a chave do ano, é só seguir o base de cáculo explicada anteriormente.
 <br>
 <h3>Código</h3>
